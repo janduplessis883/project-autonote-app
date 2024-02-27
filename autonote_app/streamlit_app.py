@@ -89,3 +89,19 @@ if page == "View Code":
             st.code(code)
         else:
             st.markdown(code)
+
+
+if page == "Enter New Code":
+    st.header("Enter New Code")
+
+
+if page == "Edit Group Names":
+    st.header("Edit Group Names")
+
+
+if page == "Delete Code":
+    st.header("Delete Code")
+
+
+if page == "About":
+    st.header("About")
