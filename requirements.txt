@@ -36,5 +36,5 @@ pytest
 black
 streamlit==1.31.0
 SQLAlchemy
-mysqlclient
 streamlit_shadcn_ui
+mysql-connector-python
