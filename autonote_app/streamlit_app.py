@@ -22,11 +22,11 @@ html = """
 """
 st.markdown(html, unsafe_allow_html=True)
 
-conn = st.connection("mydb", type="sql", autocommit=True)
+conn = st.connection("CloudSQL", type="sql", autocommit=True)
 groups = conn.query("select * from code_groups3", ttl=3600)
 # st.dataframe(groups)
 
-conn = st.connection("mydb", type="sql", autocommit=True)
+conn = st.connection("CloudSQL", type="sql", autocommit=True)
 code = conn.query("select * from code_blocks3", ttl=3600)
 # st.dataframe(code)
 
