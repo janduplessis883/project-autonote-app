@@ -7,20 +7,6 @@ import streamlit_shadcn_ui as ui
 
 st.set_page_config(page_title="AutoNote")
 
-html = """
-<style>
-.gradient-text {
-    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-size: 3em;
-    font-weight: bold;
-}
-</style>
-<div class="gradient-text">AutoNote App - View Code</div>
-"""
-st.markdown(html, unsafe_allow_html=True)
 
 conn = st.connection("CloudSQL", type="sql", autocommit=True)
 groups = conn.query("select * from code_groups3", ttl=3600)
@@ -65,6 +51,20 @@ st.sidebar.markdown(centered_html, unsafe_allow_html=True)
 
 # ======== View Code ===============================================================
 if page == "View Code":
+    html = """
+    <style>
+    .gradient-text {
+        background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 3em;
+        font-weight: bold;
+    }
+    </style>
+    <div class="gradient-text">AutoNote - View Code</div>
+    """
+    st.markdown(html, unsafe_allow_html=True)
     options = groups["group_name"].to_list()
     options.sort()
     name_to_id = pd.Series(groups.id.values, index=groups.group_name).to_dict()
@@ -92,7 +92,34 @@ if page == "View Code":
 
 
 if page == "Enter New Code":
-    st.header("Enter New Code")
+    new = """
+    <style>
+    .gradient-text {
+        background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 3em;
+        font-weight: bold;
+    }
+    </style>
+    <div class="gradient-text">AutoNote - Enter New Code:</div>
+    """
+    st.markdown(new, unsafe_allow_html=True)
+    # Start a form with a unique key
+    with st.form(key="my_form"):
+        # Create a text input
+        group_name = st.text_input(label="Enter some text")
+
+        # Create a text area
+        code = st.text_area(label="Enter a lot of text", height=300)
+
+        # Create a submit button
+        submit_button = st.form_submit_button(label="Submit")
+
+    # Now, you can use the input data as needed
+    if submit_button:
+        st.code(code, language="python")
 
 
 if page == "Edit Group Names":
