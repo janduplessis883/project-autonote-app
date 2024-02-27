@@ -25,7 +25,7 @@ pytest
 # mlflow==2.1.1
 # tpot
 # imblearn
-mysqlclient
+
 # API
 # fastapi
 # uvicorn
@@ -37,3 +37,5 @@ black
 streamlit==1.31.0
 SQLAlchemy
 streamlit_shadcn_ui
+mysql-connector-python
+mysqlclient
