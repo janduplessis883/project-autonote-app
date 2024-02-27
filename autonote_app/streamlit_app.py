@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit_shadcn_ui as ui
 
+
 st.set_page_config(page_title="AutoNote")
 
 html = """
