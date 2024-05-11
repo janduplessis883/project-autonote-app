@@ -36,27 +36,12 @@ def main():
             pass
 
         elif tab == "URLs":
-            ui.link_button(
-                text="Github Jan Repo",
-                url="https://github.com/janduplessis883?tab=repositories",
-                key="link_btn1",
+            st.markdown(
+                "![GitHub](https://github.com/janduplessis883?tab=repositories)"
             )
-            ui.link_button(
-                text="Streamlit My Apps",
-                url="https://share.streamlit.io",
-                key="link_btn2",
-            )
-            ui.link_button(
-                text="AI MedReview",
-                url="https://ai-medreview.streamlit.app",
-                key="link_btn3",
-            )
-            ui.link_button(
-                text="DeepLearningAI",
-                url="https://www.deeplearning.ai/short-courses/",
-                key="link_btn4",
-            )
-
+            st.markdown("![Streamlit](https://share.streamlit.io)")
+            st.markdown("![AI MedReview](https://ai-medreview.streamlit.app)")
+            st.markdown("![DeepLearningAi](https://www.deeplearning.ai/short-courses/)")
         # You can add your main app logic here
     else:
         login_form()
