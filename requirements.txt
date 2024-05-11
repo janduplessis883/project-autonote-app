@@ -39,3 +39,4 @@ SQLAlchemy
 streamlit_shadcn_ui
 mysql-connector-python
 pymysql
+pydataset

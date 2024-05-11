@@ -1,5 +1,7 @@
 import streamlit as st
 import os
+import streamlit.components.v1 as components
+from pydataset import data
 
 # Assuming streamlit_shadcn_ui exists and has been installed
 import streamlit_shadcn_ui as ui
@@ -21,21 +23,25 @@ def main():
             key="badges2",
         )
         tab = ui.tabs(
-            options=["Home", "AutoNote", "Webhooks", "URLs"],
+            options=["Home", "AutoNote", "ML", "URLs", "Pydataset"],
             default_value="Home",
             key="kanaries",
         )
 
         if tab == "Home":
+            st.title("Home")
             st.image("images/random2.png")
 
         elif tab == "AutoNote":
+            st.title("AutoNote")
             pass
 
         elif tab == "ML":
+            st.title("Machine Learning")
             pass
 
         elif tab == "URLs":
+            st.title("URLs")
             ui.link_button(
                 text="Github Jan Repo",
                 url="https://github.com/janduplessis883?tab=repositories",
@@ -57,7 +63,16 @@ def main():
                 key="link_btn4",
             )
 
-        # You can add your main app logic here
+        elif tab == "Pydataset":
+            st.title("Pydataset")
+            my_dataset = data()
+            st.write(my_dataset)
+
+            dataset_id_list = my_dataset["dataset_id"].to_list()
+            select_dataset = st.selectbox(label="View Dataset", options=dataset_id_list)
+            st.markdown(f"Dataset size = **{data(select_dataset).shape}**")
+            st.write(data(select_dataset))
+
     else:
         login_form()
 
