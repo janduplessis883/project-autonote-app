@@ -20,7 +20,43 @@ def main():
             class_name="flex gap-2",
             key="badges2",
         )
-        st.image("images/new.png")
+        tab = ui.tabs(
+            options=["Home", "AutoNote", "Webhooks", "URLs"],
+            default_value="Home",
+            key="kanaries",
+        )
+
+        if tab == "Home":
+            st.image("images/new.png")
+
+        elif tab == "AutoNote":
+            pass
+
+        elif tab == "ML":
+            pass
+
+        elif tab == "URLs":
+            ui.link_button(
+                text="Github Jan Repo",
+                url="https://github.com/janduplessis883?tab=repositories",
+                key="link_btn1",
+            )
+            ui.link_button(
+                text="Streamlit My Apps",
+                url="https://share.streamlit.io",
+                key="link_btn2",
+            )
+            ui.link_button(
+                text="AI MedReview",
+                url="https://ai-medreview.streamlit.app",
+                key="link_btn3",
+            )
+            ui.link_button(
+                text="DeepLearningAI",
+                url="https://www.deeplearning.ai/short-courses/",
+                key="link_btn4",
+            )
+
         # You can add your main app logic here
     else:
         login_form()
