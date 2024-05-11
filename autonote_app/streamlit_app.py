@@ -2,9 +2,12 @@ import streamlit as st
 import os
 import streamlit.components.v1 as components
 from pydataset import data
+import random
 
 # Assuming streamlit_shadcn_ui exists and has been installed
 import streamlit_shadcn_ui as ui
+
+random_number = random.randint(1, 4)
 
 
 # Function to check the password
@@ -30,7 +33,7 @@ def main():
 
         if tab == "Home":
             st.title("Home")
-            st.image("images/random2.png")
+            st.image(f"images/random{random_number}.png")
 
         elif tab == "AutoNote":
             st.title("AutoNote")
