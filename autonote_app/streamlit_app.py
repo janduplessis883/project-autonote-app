@@ -27,7 +27,7 @@ def main():
         )
 
         if tab == "Home":
-            st.image("images/new.png")
+            st.image("images/random2.png")
 
         elif tab == "AutoNote":
             pass
