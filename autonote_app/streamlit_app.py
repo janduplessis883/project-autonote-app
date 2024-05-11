@@ -31,7 +31,7 @@ def login_form():
     with st.container(height=150, border=0):
         pass
     ui.avatar(
-        src="https://github.com/janduplessis883/project-autonote-app/blob/master/images/meavi.png?raw=true"
+        src="https://github.com/janduplessis883/project-autonote-app/blob/master/images/janavi2.png?raw=true"
     )
     password = ui.input(
         default_value="", type="password", placeholder="Enter password!", key="input1"
