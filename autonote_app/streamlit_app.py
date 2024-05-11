@@ -36,12 +36,10 @@ def main():
             pass
 
         elif tab == "URLs":
-            st.markdown(
-                "![GitHub](https://github.com/janduplessis883?tab=repositories)"
-            )
-            st.markdown("![Streamlit](https://share.streamlit.io)")
-            st.markdown("![AI MedReview](https://ai-medreview.streamlit.app)")
-            st.markdown("![DeepLearningAi](https://www.deeplearning.ai/short-courses/)")
+            st.markdown("[GitHub](https://github.com/janduplessis883?tab=repositories)")
+            st.markdown("[Streamlit](https://share.streamlit.io)")
+            st.markdown("[AI MedReview](https://ai-medreview.streamlit.app)")
+            st.markdown("[DeepLearningAi](https://www.deeplearning.ai/short-courses/)")
         # You can add your main app logic here
     else:
         login_form()
