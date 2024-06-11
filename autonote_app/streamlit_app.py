@@ -3,6 +3,8 @@ import os
 import streamlit.components.v1 as components
 from pydataset import data
 import random
+from datetime import datetime
+import requests
 
 # Assuming streamlit_shadcn_ui exists and has been installed
 import streamlit_shadcn_ui as ui
@@ -26,7 +28,7 @@ def main():
             key="badges2",
         )
         tab = ui.tabs(
-            options=["Home", "AutoNote", "ML", "URLs", "Pydataset"],
+            options=["Home", "AutoNote", "ML", "URLs", "Pydataset", "Reg Authority"],
             default_value="Home",
             key="kanaries",
         )
@@ -76,8 +78,57 @@ def main():
             st.markdown(f"Dataset size = **{data(select_dataset).shape}**")
             st.write(data(select_dataset))
 
-    else:
-        login_form()
+        elif tab == "Reg Authority":
+            st.title("Registration Authority")
+            # Create a form
+            # Create a form
+            with st.form(key="staffmember_form"):
+                # Input fields
+                name = st.text_input(label="", placeholder="Full Name")
+                smart_card = st.text_input(label="", placeholder="Smart Card No.")
+                pos1 = st.text_input(label="", placeholder="Position Name")
+                reason = st.text_input(
+                    label="", placeholder="Reason for position assignment."
+                )
+                eps = st.toggle(
+                    label="Electronic Prescribing"
+                )  # Changed toggle to checkbox
+
+                col1, col2 = st.columns(2)
+                start_date = col1.date_input(label="Start Date", value=datetime.today())
+                end_date = col2.date_input(label="End Date", value=datetime.today())
+
+                submit_button = st.form_submit_button(label="Submit")
+
+                # Handling form submission
+                if submit_button:
+                    form_data = {
+                        "name": name,
+                        "smart_card": smart_card,
+                        "position": pos1,
+                        "reason": reason,
+                        "electronic_prescribing": eps,
+                        "start_date": start_date.strftime("%Y-%m-%d"),
+                        "end_date": end_date.strftime("%Y-%m-%d"),
+                    }
+
+                    # Send the form data via a webhook
+                    webhook_url = (
+                        "https://hook.eu1.make.com/dpo7fghnlv7elbgoqnaj6gpk0gg4mn44"
+                    )
+                    response = requests.post(webhook_url, json=form_data)
+
+                    if response.status_code == 200:
+                        st.success(
+                            f"Form submitted successfully! Name: {name}, Smart card: {smart_card}"
+                        )
+                    else:
+                        st.error(
+                            f"Failed to submit form. Status code: {response.status_code}"
+                        )
+
+        else:
+            login_form()
 
 
 def login_form():
